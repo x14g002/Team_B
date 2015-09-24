@@ -270,7 +270,7 @@ public class Test01 extends HttpServlet {
 
 					} else {
 						String s = String
-								.format("select * from t_com where k_id=%s ORDER BY c_id DESC",
+								.format("select * from t_com where k_id=%s ORDER BY c_id ASC",
 										res.getString(1));
 						resc = mOracle.query(s);
 						while (resc.next()) {
