@@ -107,7 +107,7 @@ public class Test01 extends HttpServlet {
 		String userID = "bbsteambadmin";
 		String adminID = "bbsteambadmin";
 
-		if (param1 != null && param1.length() > 0) {
+		if (param1 != null && param1.length() > 0&&param2 != null && param2.length() > 0) {
 			// UTF8をJava文字列に変換
 			String data1 = new String(param1.getBytes("ISO-8859-1"), "UTF-8");
 			String title = new String(param2.getBytes("ISO-8859-1"), "UTF-8");
@@ -259,7 +259,7 @@ public class Test01 extends HttpServlet {
 						+ "<div id=\"body\">\n"
 						+ "<br><form method=\"post\"><center>Title:<textarea name=\"title\" rows=\"1\" cols=\"30\"></textarea></center>"
 						+ "<center><textarea name=\"data1\" rows=\"5\" cols=\"40\"></textarea></center>"
-						+ "<br><center><input type=\"submit\" value=\"送信\"></form></center>\n",
+						+ "<br><center><input type=\"image\" img src=\"/BBS/image/button1.png\" onMouseOver=\"this .src='/BBS/image/button2.png'\" onMouseOut=\"this .src='/BBS/image/button1.png'\"  value=\"送信\"></form></center>\n",
 				TITLE);
 
 		// データの抽出
@@ -277,7 +277,7 @@ public class Test01 extends HttpServlet {
 							CONVERT(res.getString(3)), CONVERT(data));
 					if (userID == adminID) {
 						out.format(
-								"<form method=\"post\"><button type=\"submit\" name=\"k_delete\" value=\"%s\">削除</button></form>",
+								"<form method=\"post\"><input type=\"image\" src=\"/BBS/image/batu01.png\" onMouseOver=\"this .src='/BBS/image/batu02.png'\" onMouseOut=\"this .src='/BBS/image/batu01.png'\" name=\"k_delete\" value=\"%s\"></form>",
 								res.getString(1));
 					}
 
@@ -319,7 +319,7 @@ public class Test01 extends HttpServlet {
 										resc.getString(5));
 								if (userID == adminID) {
 									out.format(
-											"<form method=\"post\"><button type=\"submit\"  name=\"delete_id\" value=\"%s,%s\">削除</button></form>",
+											"<form method=\"post\"><div align=\"right\"><input type=\"image\" src=\"/BBS/image/batu01.png\" onMouseOver=\"this .src='/BBS/image/batu02.png'\" onMouseOut=\"this .src='/BBS/image/batu01.png'\" name=\"delete_id\" value=\"%s,%s\"></div></form>",
 											resc.getString(1), res.getString(1));
 								}
 							}
@@ -340,7 +340,7 @@ public class Test01 extends HttpServlet {
 		if (userID == adminID) {
 			out.format("<center><form method=\"post\">ジャンルID:<textarea name=\"g_id\" rows=\"1\" cols=\"5\"></textarea>"
 					+ "　名前:<textarea name=\"g_name\" rows=\"1\" cols=\"10\"></textarea>"
-					+ "<input type=\"submit\" value=\"変更\"></form></center><br>");
+					+ "<br><input type=\"image\" img src=\"/BBS/image/button1.png\" onMouseOver=\"this .src='/BBS/image/button2.png'\" onMouseOut=\"this .src='/BBS/image/button1.png'\" value=\"変更\"></form></center><br>");
 		}
 
 		// 終了部分
