@@ -166,22 +166,21 @@ public class Test01 extends HttpServlet {
 			System.out.println("DEBUG:SQL文 " + sql);
 			mOracle.execute(sql);
 
-		}else if (param7 != null && param7.length() > 0 && param8 != null && param8.length() > 0) {
+		} else if (param7 != null && param7.length() > 0 && param8 != null
+				&& param8.length() > 0) {
 			// UTF8をJava文字列に変換
 			String g_id = new String(param7.getBytes("ISO-8859-1"), "UTF-8");
 			String g_name = new String(param8.getBytes("ISO-8859-1"), "UTF-8");
 
 			// SQL文の作成 Oracle.STRはシングルクオートのエスケープ処理
-			String sql = String
-					.format("update t_genre set g_name = '%s' where g_id = %s",
-							Oracle.STR(g_name), Oracle.STR(g_id));
+			String sql = String.format(
+					"update t_genre set g_name = '%s' where g_id = %s",
+					Oracle.STR(g_name), Oracle.STR(g_id));
 			// デバッグ用
 			System.out.println("DEBUG:SQL文 " + sql);
 			// DBにSQL文を実行させる
 			mOracle.execute(sql);
-			
-			
-			
+
 		}
 		// 開始部分の出力
 		out.format(
@@ -237,19 +236,19 @@ public class Test01 extends HttpServlet {
 						+ "color: #ababab;\n"
 						+ "font-size: 10px;\n"
 						+ "text-align: center;\n"
-						+"}\n"
-						+"a:link {\n"
-						+"	color: #ffa500; \n"
-						+"}\n"
-						+"a:visited {\n"
-						+"	color: #ffa500;\n"
-						+"}\n"
-						+"a:hover {\n"
-						+"	color: #FFFFFF; \n"
-						+"}\n"
-						+"a:active {\n"
-						+"	color: #FFFFFF; \n"
-						+"}\n"
+						+ "}\n"
+						+ "a:link {\n"
+						+ "	color: #ffa500; \n"
+						+ "}\n"
+						+ "a:visited {\n"
+						+ "	color: #ffa500;\n"
+						+ "}\n"
+						+ "a:hover {\n"
+						+ "	color: #FFFFFF; \n"
+						+ "}\n"
+						+ "a:active {\n"
+						+ "	color: #FFFFFF; \n"
+						+ "}\n"
 						+ "-->\n"
 						+ "</style>\n"
 						+ "</head>\n"
@@ -337,14 +336,12 @@ public class Test01 extends HttpServlet {
 			out.format("<br>");
 		} catch (SQLException e) {
 		}
-		
+
 		if (userID == adminID) {
 			out.format("<center><form method=\"post\">ジャンルID:<textarea name=\"g_id\" rows=\"1\" cols=\"5\"></textarea>"
 					+ "　名前:<textarea name=\"g_name\" rows=\"1\" cols=\"10\"></textarea>"
-					+ "<input type=\"submit\" value=\"変更\"></form></center><br>"
-				);
+					+ "<input type=\"submit\" value=\"変更\"></form></center><br>");
 		}
-		
 
 		// 終了部分
 		out.format("</div><br><div id=\"footer\">作成:Bチーム　素材:<a href=\"http://neo-himeism.net/\" target=\"_blank\" title=\"NEO HIMEISM\">NEO HIMEISM</a></div></body>\n</html>\n");
