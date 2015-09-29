@@ -107,19 +107,22 @@ public class Test01 extends HttpServlet {
 		String userID = "bbsteambadmin";
 		String adminID = "bbsteambadmin";
 
-		if (param1 != null && param1.length() > 0&&param2 != null && param2.length() > 0) {
+		if (param1 != null && param1.length() > 0 && param2 != null
+				&& param2.length() > 0) {
 			// UTF8をJava文字列に変換
 			String data1 = new String(param1.getBytes("ISO-8859-1"), "UTF-8");
 			String title = new String(param2.getBytes("ISO-8859-1"), "UTF-8");
 
 			// SQL文の作成 Oracle.STRはシングルクオートのエスケープ処理
-			String sql = String
-					.format("insert into t_kakikomi values(BBSSEQ.nextval,'%s','%s', null,1,'%s',0)",
-							Oracle.STR(title), userID, Oracle.STR(data1));
-			// デバッグ用
-			System.out.println("DEBUG:SQL文 " + sql);
-			// DBにSQL文を実行させる
-			mOracle.execute(sql);
+			if (title != null && data1 != null) {
+				String sql = String
+						.format("insert into t_kakikomi values(BBSSEQ.nextval,'%s','%s', null,1,'%s',0)",
+								Oracle.STR(title), userID, Oracle.STR(data1));
+				// デバッグ用
+				System.out.println("DEBUG:SQL文 " + sql);
+				// DBにSQL文を実行させる
+				mOracle.execute(sql);
+			}
 		} else if (param3 != null && param3.length() > 0) {
 			String comment = new String(param3.getBytes("ISO-8859-1"), "UTF-8");
 			String k_id = new String(param4.getBytes("ISO-8859-1"), "UTF-8");
